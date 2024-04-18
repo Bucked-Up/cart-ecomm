@@ -33,7 +33,7 @@ const sortObjectsBasedOnOrder = (referenceArray, arrayToSort) => {
 
 const main = async () => {
   toggleLoading();
-  let [data, orderBumpData] = await Promise.all([fetchProduct({ ids: productsID }), fetchProduct({ ids: Object.keys(orderBumpIds), isOrderBump: true })]);
+  let [data, orderBumpData] = await Promise.all([fetchProduct({ ids: productsID, country }), fetchProduct({ ids: Object.keys(orderBumpIds), isOrderBump: true })]);
   sortObjectsBasedOnOrder(productsID,data.data)
   if(data.noStock){
     alert("Product not found.");
