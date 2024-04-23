@@ -126,6 +126,8 @@ const handleComplexProduct = ({ prod, productInfo, img }) => {
         return "L";
       case "X-Large":
         return "XL";
+      case "2X-Large":
+        return "2XL"
       default:
         return value;
     }
@@ -157,7 +159,7 @@ const handleComplexProduct = ({ prod, productInfo, img }) => {
         const placeholder = placeHolders.find((placeHolder) => placeHolder.querySelector(`[size="${getNewName(size.name).split("(")[0].trim()}"]`));
         secondaryVariantsWrapper.insertBefore(wrapper, placeholder);
         button.addEventListener("change",()=>{secondaryVariantsWrapper.classList.remove("shake")})
-        placeholder.remove();
+        placeholder?.remove();
       }
     });
   };

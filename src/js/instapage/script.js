@@ -5,35 +5,40 @@ const version_id = "";
 
 const hasQtty = false;
 
-const isFirstPage = true;
-const isFinalPage = false;
-const country = null;
-const buyRedirect = ``;
-const discountCode = "ksamb1";
+const isFirstPage = false;
+const isFinalPage = true;
+const country = "au";
+const buyRedirect = `https://au.buckedup.com?${urlParams}`;
+const discountCode = "";
 
-const params = { cc: discountCode };
+const params = {};
 for (let key in params) {
   urlParams.set(key, params[key]);
 }
 
-const productsID = [1372,935,924];
+const productsID = [1393];
 const orderBumpIds = {};
-const buyButtonsIds = ["#BTN-1"];
-const noThanksButtonsIds = ["#BTN-2"];
-const redirectUrl = `https://.com?${urlParams}`;
-const noThanksRedirect = `https://.com?${urlParams}`;
+const buyButtonsIds = ["#btn1"];
+const noThanksButtonsIds = ["#btn-no"];
+const redirectUrl = `https://au.buckedup.com?${urlParams}`;
+const noThanksRedirect = `https://au.buckedup.com?${urlParams}`;
 
 //stop here.
 const origin = window.location.pathname.replace("/", "").replace("/", "");
-const cookieConfig = "path=/; domain=.buckedup.com;max-age=3600";
+const getTopLevelDomain = () => {
+  const fullDomain = window.location.hostname;
+  const domainRegex = /\.([a-z]{2,})\.([a-z]{2,})$/;
+  const match = fullDomain.match(domainRegex);
+  if (match) {
+    return `.${match[1]}.${match[2]}`;
+  } else {
+    return fullDomain;
+  }
+};
+const cookieConfig = `path=/; domain=${getTopLevelDomain()};max-age=3600`;
 document.cookie = `offer_id=${discountCode};${cookieConfig}`;
 document.cookie = `page_id=${page_id};${cookieConfig}`;
 urlParams.forEach((value, key) => {
   document.cookie = `${key}=${value};${cookieConfig}`;
 });
 localStorage.setItem("first_page", origin);
-
-// const productsID = ["9037941342514", "8820417003826-oneCard", 8858111377714, 8768929825074];
-// const orderBumpIds = { 8820417003826: { title: "Test", price: 10.99, hasQtty: 5 } };
-// const buyButtonsIds = ["#BTN-1"];
-// const discountCode = "";
