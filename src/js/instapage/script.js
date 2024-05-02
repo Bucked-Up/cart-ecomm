@@ -1,27 +1,27 @@
 const urlParams = new URLSearchParams(window.location.search);
-const step_count = "";
-const page_id = "";
-const version_id = "";
+const step_count = "lp";
+const page_id = "KS-LP-OPS";
+const version_id = "auksfb1";
 
 const hasQtty = false;
 
-const isFirstPage = false;
-const isFinalPage = true;
+const isFirstPage = true;
+const isFinalPage = false;
 const country = "au";
-const buyRedirect = `https://au.buckedup.com?${urlParams}`;
-const discountCode = "";
+const buyRedirect = `https://.com?${urlParams}`;
+const discountCode = "auksfb1";
 
 const params = {};
 for (let key in params) {
   urlParams.set(key, params[key]);
 }
-
-const productsID = [1393];
+// 1393
+const productsID = [1397];
 const orderBumpIds = {};
-const buyButtonsIds = ["#btn1"];
-const noThanksButtonsIds = ["#btn-no"];
-const redirectUrl = `https://au.buckedup.com?${urlParams}`;
-const noThanksRedirect = `https://au.buckedup.com?${urlParams}`;
+const buyButtonsIds = ["#btn1", "#btn2", "#btn3"];
+const noThanksButtonsIds = [];
+const redirectUrl = `https://.com?${urlParams}`;
+const noThanksRedirect = `https://.com?${urlParams}`;
 
 //stop here.
 const origin = window.location.pathname.replace("/", "").replace("/", "");

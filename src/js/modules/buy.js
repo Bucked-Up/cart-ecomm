@@ -45,9 +45,13 @@ const buy = async (data) => {
     //     });
     //   });
     // } else {
-    const isNormalProduct = !product.options || !product.options[0]?.values || Object.hasOwn(product.options[0]?.values[0], "in_stock");
     for (let option of product.options) {
       let currentVariant;
+      if (option.values.length <= 1) {
+        body.items[product.id].options[option.id] = option.values[0].id;
+        totalPrice = totalPrice + getPrice(option.values[0].price, product.quantity);
+        continue;
+      }
       currentVariant = getVariantId(option.id, product.id);
       if (!currentVariant.result) {
         currentVariant.wrapper.classList.add("shake");
