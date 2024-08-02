@@ -484,6 +484,8 @@ const createCart = (data, orderBumpData) => {
         const prodCard = createProduct({ prod });
         inCartContainer.appendChild(prodCard);
       } else {
+        if(prod.options.length === 1)
+            prod.options[0].name = prod.name;
         prod.options.forEach((option) => {
           const prodCard = createProduct({ prod: option });
           if (prod.options.length == 1) inCartContainer.appendChild(prodCard);

@@ -7,7 +7,7 @@ const hasQtty = false;
 
 const isFirstPage = true;
 const isFinalPage = false;
-const country = "au";
+const country = "ca";
 const buyRedirect = `https://.com?${urlParams}`;
 const discountCode = "auksfb1";
 
@@ -16,7 +16,7 @@ for (let key in params) {
   urlParams.set(key, params[key]);
 }
 // 1393
-const productsID = [1397];
+const productsID = [139,1323,1324];
 const orderBumpIds = {};
 const buyButtonsIds = ["#btn1", "#btn2", "#btn3"];
 const noThanksButtonsIds = [];
