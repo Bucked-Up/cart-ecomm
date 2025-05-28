@@ -69,6 +69,7 @@ const handleLoad = async ({ ids, country }) => {
     return Promise.all(ids.map((id) => fetchApi(id)));
   };
   await fetchEveryProduct(ids);
+  window.viewedProducts = data.data.map((prod) => ({ product_id: prod.id, name: prod.name }));
   handleStock();
   return data;
 };
