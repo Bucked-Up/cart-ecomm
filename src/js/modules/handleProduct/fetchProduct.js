@@ -23,10 +23,7 @@ const handleLoad = async ({ ids, country }) => {
         for (let mainValue of mainOption.values) {
           let hasStock = false;
           for (let secondValue of secondaryOption.values) {
-            if (
-              (product.stock[`[${mainValue.id},${secondValue.id}]`] !== undefined && product.stock[`[${mainValue.id},${secondValue.id}]`] > 0) ||
-              (product.stock[`[${secondValue.id},${mainValue.id}]`] !== undefined && product.stock[`[${secondValue.id},${mainValue.id}]`] > 0)
-            ) {
+            if ((product.stock[`[${mainValue.id},${secondValue.id}]`] !== undefined && product.stock[`[${mainValue.id},${secondValue.id}]`] > 0) || (product.stock[`[${secondValue.id},${mainValue.id}]`] !== undefined && product.stock[`[${secondValue.id},${mainValue.id}]`] > 0)) {
               hasStock = true;
             }
           }
@@ -69,7 +66,11 @@ const handleLoad = async ({ ids, country }) => {
     return Promise.all(ids.map((id) => fetchApi(id)));
   };
   await fetchEveryProduct(ids);
-  window.viewedProducts = data.data.map((prod) => ({ product_id: prod.id, name: prod.name }));
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "Viewed Products",
+    products: data.data.map((prod) => ({ product_id: prod.id, name: prod.name })),
+  });
   handleStock();
   return data;
 };
