@@ -1,6 +1,6 @@
 import { fetchUrl } from "../../variables.js";
 
-const handleLoad = async ({ ids, country }) => {
+const handleLoad = async ({ ids, country, isOrderBump }) => {
   const data = { data: [], noStock: false, error: false };
   const handleStock = () => {
     data.data.forEach((product) => {
@@ -66,11 +66,13 @@ const handleLoad = async ({ ids, country }) => {
     return Promise.all(ids.map((id) => fetchApi(id)));
   };
   await fetchEveryProduct(ids);
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "Viewed Products",
-    products: data.data.map((prod) => ({ product_id: prod.id, name: prod.name })),
-  });
+  if(!isOrderBump){
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "Viewed Products",
+      products: data.data.map((prod) => ({ product_id: prod.id, name: prod.name, price: prod.price.split("$")[1], currency: prod.price.split("$")[0].trim() || "USD"}))
+    });
+  }
   handleStock();
   return data;
 };
