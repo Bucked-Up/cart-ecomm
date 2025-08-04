@@ -1,4 +1,4 @@
-const fetchUrl = `https://ar5vgv5qw5.execute-api.us-east-1.amazonaws.com/list/`;
+const fetchUrl = `https://www.buckedup.com/product/json/detail`;
 const postUrl = `https://ar5vgv5qw5.execute-api.us-east-1.amazonaws.com/upsell/${urlParams.get("order_uuid")}`
 const finishUrl = `https://ar5vgv5qw5.execute-api.us-east-1.amazonaws.com/upsell/${urlParams.get("order_uuid")}/finish`
 const postApi = async (url, body) => {

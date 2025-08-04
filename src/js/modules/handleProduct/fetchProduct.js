@@ -45,7 +45,7 @@ const handleLoad = async ({ ids, country, isOrderBump }) => {
 
   const fetchEveryProduct = (ids) => {
     const fetchApi = async (id) => {
-      let url = `${fetchUrl}${id}`;
+      let url = `${fetchUrl}?product_id=${id}`;
       if (country) url = url + `?country=${country}`;
       try {
         const response = await fetch(url);
